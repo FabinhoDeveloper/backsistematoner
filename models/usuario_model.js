@@ -3,7 +3,7 @@ const {DataTypes} = require('sequelize')
 
 
 const Usuario = sequelize.define('USUARIO', {
-    Id_administrador: {
+    id_usuario: {
         type: DataTypes.NUMBER(11),
         primaryKey: true,
         allowNull: false,
@@ -16,6 +16,9 @@ const Usuario = sequelize.define('USUARIO', {
         type: DataTypes.STRING(45)
     },
     setor: {
+        type: DataTypes.STRING(45)
+    },
+    secretaria: {
         type: DataTypes.STRING(45)
     }
 }, {

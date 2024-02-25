@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/get-usuario', (req, res) => {
-    res.json({message: 'Rota de requisição de usuario'})
-})
+const usuario_controllers = require("../controllers/usuario_controllers.js")
+
+router.get('/get-usuario', usuario_controllers.get_usuario)
 
 module.exports = router
