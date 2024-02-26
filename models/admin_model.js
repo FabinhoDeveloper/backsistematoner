@@ -2,7 +2,7 @@ const sequelize = require("../data_config.js")
 const {DataTypes} = require('sequelize')
 
 const Administrador = sequelize.define('ADMINISTRADOR', {
-    id_administrador: {
+    idAdministrador: {
         type: DataTypes.NUMBER(11),
         primaryKey: true,
         allowNull: false,

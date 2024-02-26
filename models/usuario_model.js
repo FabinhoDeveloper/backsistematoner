@@ -3,7 +3,7 @@ const {DataTypes} = require('sequelize')
 
 
 const Usuario = sequelize.define('USUARIO', {
-    id_usuario: {
+    idUsuario: {
         type: DataTypes.NUMBER(11),
         primaryKey: true,
         allowNull: false,
