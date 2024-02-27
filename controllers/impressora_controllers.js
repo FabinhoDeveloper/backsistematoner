@@ -14,9 +14,6 @@ const cadastrar_impressora = async (req, res) => {
     try {
         const { marca, modelo, monocromatica } = req.body;
 
-        console.log(monocromatica)
-
-
         if (!marca) {
             return res.status(400).json({message: 'A marca é obrigatória'})
         }
