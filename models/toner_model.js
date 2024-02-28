@@ -5,7 +5,6 @@ const Toner = sequelize.define('TONER', {
     idToner: {
         type: DataTypes.NUMBER(11),
         primaryKey: true,
-        allowNull: false,
         auto_increment: true
     },
     modelo: {

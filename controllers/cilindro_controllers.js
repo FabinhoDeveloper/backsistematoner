@@ -14,8 +14,8 @@ const cadastrar_cilindro = async (req, res) => {
    const {modelo, estoque} = req.body
 
    if (!modelo) {
-    return res.status(400).json({message: 'O modelo é obrigatório'})
-}
+        return res.status(400).json({message: 'O modelo é obrigatório'})
+    }
 
     if (!estoque) {
         return res.status(400).json({message: 'O valor de estoque é obrigatório'})
@@ -23,20 +23,23 @@ const cadastrar_cilindro = async (req, res) => {
 
    try {
         const novoCilindro = await cilindro_model.create({
-            marca,
             modelo: modelo.toUpperCase(),
-            monocromatica: monocromatica_boolean
+            estoque: estoque
         });
-
 
         // Envie uma resposta HTTP de sucesso com o novo registro criado
         res.status(201).json({
             success: true,
-            message: 'Impressora cadastrada com sucesso',
-            data: novaImpressora
+            message: 'Cilindro cadastrado com sucesso',
+            data: novoCilindro
         });
    } catch (error) {
-    
+        console.error('Erro ao cadastrar cilindro:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Erro ao cadastrar cilindro',
+            error: error.message
+        });
    }
 };
 

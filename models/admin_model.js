@@ -5,7 +5,6 @@ const Administrador = sequelize.define('ADMINISTRADOR', {
     idAdministrador: {
         type: DataTypes.NUMBER(11),
         primaryKey: true,
-        allowNull: false,
         auto_increment: true
     },
     nome: {
