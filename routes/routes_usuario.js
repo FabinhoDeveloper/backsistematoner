@@ -5,4 +5,5 @@ const usuario_controllers = require("../controllers/usuario_controllers.js")
 
 router.get('/get-usuario', usuario_controllers.get_usuario)
 
+
 module.exports = router

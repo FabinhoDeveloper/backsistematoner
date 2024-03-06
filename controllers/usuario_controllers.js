@@ -10,4 +10,6 @@ const get_usuario = async(req, res) => {
     }
 }
 
+
+
 module.exports = {get_usuario}

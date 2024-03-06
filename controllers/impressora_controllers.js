@@ -10,49 +10,49 @@ const get_impressora = async (req, res) => {
     }
 }
 
-const get_impressoras_by_marca = async (req, res) => {
-    const marca = req.params.marca; // Supondo que o parâmetro seja a marca da impressora
+const get_impressora_by_param = async (req, res) => {
+    const param_impressora = (req.params.impressora)
 
-    try {
-        // Consultar o banco de dados para obter todas as impressoras com a marca especificada
-        const impressoras = await impressora_model.findAll({
-            where: {
-                marca: marca // Filtrar pelas impressoras com a marca fornecida
+    const isNotANumber = isNaN(param_impressora)
+
+    if (!isNotANumber) {
+        try {
+            // Consultar o banco de dados para obter todas as impressoras com a marca especificada
+            const impressora = await impressora_model.findOne({
+                where: {
+                    idImpressora: param_impressora // Filtrar pelas impressoras com a marca fornecida
+                }
+            });
+    
+            // Verificar se foram encontradas impressoras
+            if (impressora) {
+                res.status(200).json(impressora); // Retornar as impressoras encontradas
+            } else {
+                res.status(404).json({ error: 'Nenhuma impressora encontrada com este ID' }); // Retornar um erro se nenhuma impressora for encontrada
             }
-        });
-
-        // Verificar se foram encontradas impressoras
-        if (impressoras.length > 0) {
-            res.status(200).json(impressoras); // Retornar as impressoras encontradas
-        } else {
-            res.status(404).json({ error: 'Nenhuma impressora encontrada com esta marca' }); // Retornar um erro se nenhuma impressora for encontrada
+        } catch (error) {
+            console.error('Erro ao obter impressoras por ID:', error);
+            res.status(500).json({ error: 'Erro ao buscar impressoras por ID' });
         }
-    } catch (error) {
-        console.error('Erro ao obter impressoras por marca:', error);
-        res.status(500).json({ error: 'Erro ao buscar impressoras por marca' });
-    }
-}
-
-const get_impressoras_by_id = async (req, res) => {
-    const id = req.params.id; // Supondo que o parâmetro seja a marca da impressora
-
-    try {
-        // Consultar o banco de dados para obter todas as impressoras com a marca especificada
-        const impressora = await impressora_model.findOne({
-            where: {
-                idImpressora: id // Filtrar pelas impressoras com a marca fornecida
+    } else {
+        try {
+            // Consultar o banco de dados para obter todas as impressoras com a marca especificada
+            const impressoras = await impressora_model.findAll({
+                where: {
+                    marca: param_impressora // Filtrar pelas impressoras com a marca fornecida
+                }
+            });
+    
+            // Verificar se foram encontradas impressoras
+            if (impressoras.length > 0) {
+                res.status(200).json(impressoras); // Retornar as impressoras encontradas
+            } else {
+                res.status(404).json({ error: 'Nenhuma impressora encontrada com esta marca' }); // Retornar um erro se nenhuma impressora for encontrada
             }
-        });
-
-        // Verificar se foram encontradas impressoras
-        if (impressora) {
-            res.status(200).json(impressora); // Retornar as impressoras encontradas
-        } else {
-            res.status(404).json({ error: 'Nenhuma impressora encontrada com este ID' }); // Retornar um erro se nenhuma impressora for encontrada
+        } catch (error) {
+            console.error('Erro ao obter impressoras por marca:', error);
+            res.status(500).json({ error: 'Erro ao buscar impressoras por marca' });
         }
-    } catch (error) {
-        console.error('Erro ao obter impressoras por ID:', error);
-        res.status(500).json({ error: 'Erro ao buscar impressoras por ID' });
     }
 }
 
@@ -109,4 +109,4 @@ const cadastrar_impressora = async (req, res) => {
     }
 };
 
-module.exports = {get_impressora, cadastrar_impressora, get_impressoras_by_marca, get_impressoras_by_id}
+module.exports = {get_impressora, cadastrar_impressora, get_impressora_by_param}
