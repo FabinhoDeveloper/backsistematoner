@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../data_config.js');
 const Usuario = require('./usuario_model.js'); // Importe o modelo do Usuario
+const Impressora = require('./impressora_model.js')
 
 const Requisicao = sequelize.define('Requisicao', {
     idRequisicao: {
@@ -23,6 +24,13 @@ const Requisicao = sequelize.define('Requisicao', {
         references: {
             model: Usuario,
             key: 'idUsuario' // Nome do campo na tabela Usuario que é a chave primária
+        }
+    },
+    idImpressora: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: Impressora,
+            key: 'idImpressora' // Nome do campo na tabela Usuario que é a chave primária
         }
     }
 }, {

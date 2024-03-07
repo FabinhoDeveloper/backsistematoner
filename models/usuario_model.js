@@ -19,6 +19,9 @@ const Usuario = sequelize.define('USUARIO', {
     },
     secretaria: {
         type: DataTypes.STRING(45)
+    },
+    usuario: {
+        type: DataTypes.STRING(45)
     }
 }, {
     tableName: 'USUARIO', // nome da tabela existente no banco de dados
