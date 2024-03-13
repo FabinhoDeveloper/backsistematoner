@@ -13,6 +13,9 @@ const Administrador = sequelize.define('ADMINISTRADOR', {
     senha: {
         type: DataTypes.STRING(45)
     },
+    usuario: {
+        type: DataTypes.STRING(45)
+    }
 }, {
     tableName: 'ADMINISTRADOR', // nome da tabela existente no banco de dados
     timestamps: false // se não há colunas de timestamps (createdAt, updatedAt)
@@ -20,7 +23,7 @@ const Administrador = sequelize.define('ADMINISTRADOR', {
 
 Administrador.sync({ force: false })
     .then(() => {
-        console.log('Modelo sincronizado com a tabela existente no banco de dados.');
+        console.log('Modelo ADMINISTRADOR sincronizado com a tabela existente no banco de dados.');
     })
     .catch(err => {
         console.error('Erro ao sincronizar o modelo:', err);

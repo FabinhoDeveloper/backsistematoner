@@ -32,6 +32,12 @@ const Requisicao = sequelize.define('Requisicao', {
             model: Impressora,
             key: 'idImpressora' // Nome do campo na tabela Usuario que é a chave primária
         }
+    },
+    tipo: {
+        type: DataTypes.STRING(45)
+    },
+    cor: {
+        type: DataTypes.STRING(45)
     }
 }, {
     tableName: 'Requisicao', // nome da tabela existente no banco de dados
